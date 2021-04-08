@@ -7,4 +7,6 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
+RUN chmod +x /app/*
+
 CMD [ "python3", "index.py"]
