@@ -2,23 +2,9 @@
 
 A super simple Discord to Prometheus bridge.
 
-## config.py
+## Bot token
 
-Create a new config.py file looking like this:
-
-```python
-settings = {
-    'track_individual_users': True
-}
-
-bot = {
-    'token': 'bla bla'
-}
-
-server = {
-    'port': 8080
-}
-```
+Either in config.py or as environment variable `BOT_TOKEN`
 
 ## License
 

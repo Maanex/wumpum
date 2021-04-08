@@ -2,7 +2,6 @@ from promserver import PROM_MESSAGE_COUNT, PROM_ONLINE_COUNT, PROM_PRESENCE_GAUG
 import discord
 import config
 import threading
-import schedule
 import os
 
 
@@ -82,8 +81,6 @@ async def update_tracker_guilds():
         PROM_ONLINE_COUNT.labels(guild.id).set(count)
 
 
-def run():
-    token = os.environ['BOT_TOKEN']
-    if token is None:
-        token = config.bot['token']
-    client.run(token)
+async def run():
+    token = os.environ.get('BOT_TOKEN', config.bot['token'])
+    await client.start(token)
