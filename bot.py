@@ -3,6 +3,7 @@ import discord
 import config
 import threading
 import schedule
+import os
 
 
 intents = discord.Intents.all()
@@ -82,4 +83,7 @@ async def update_tracker_guilds():
 
 
 def run():
-    client.run(config.bot['token'])
+    token = os.environ['BOT_TOKEN']
+    if token is None:
+        token = config.bot['token']
+    client.run(token)
