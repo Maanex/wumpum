@@ -1,5 +1,6 @@
 __pycache__
 token.txt
-install.bat
 git
 .gitignore
+*.bat
+*.md
