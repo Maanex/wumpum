@@ -1,9 +1,9 @@
-FROM arm32v7/python:3.8-slim-buster
+FROM arm32v7/python:3.8.3
 
 WORKDIR /app
 
 COPY requirements.txt requirements.txt
-RUN pip install --upgrade pip
+#RUN pip install --upgrade pip
 RUN pip install discord.py
 RUN pip install prometheus-client
 
