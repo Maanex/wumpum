@@ -59,6 +59,8 @@ async def on_voice_state_update(member, before, after):
 
 async def update_trackers():
     for member in client.get_all_members():
+        if member.bot:
+            continue
         PROM_PRESENCE_GAUGE.labels(member.id).set(presence_values.get(str(member.status)))
         if member.voice is not None:
             if member.voice.channel is None:
@@ -76,7 +78,9 @@ async def update_tracker_guilds():
     for guild in client.guilds:
         count = 0
         async for member in guild.fetch_members(limit=None):
-            if not str(member.status) == 'offline':
+            if member.bot:
+                continue
+            if str(member.status) != 'offline':
                 count = count + 1
         PROM_ONLINE_COUNT.labels(guild.id).set(count)
 

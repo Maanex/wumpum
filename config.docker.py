@@ -5,6 +5,7 @@ def readSecret(name):
     with open(name, 'r') as file:
         return file.read().replace('\n', '')
 
+
 settings = {
     'track_individual_users': os.environ['WUMPUM_TRACK_INDIVIDUAL'] == 'true'
 }
