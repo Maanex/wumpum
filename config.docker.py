@@ -1,12 +1,16 @@
 import os
 
 
+def readSecret(name):
+    with open(name, 'r') as file:
+        return file.read().replace('\n', '')
+
 settings = {
     'track_individual_users': os.environ['WUMPUM_TRACK_INDIVIDUAL'] == 'true'
 }
 
 bot = {
-    'token': os.environ['WUMPUM_DBOT_TOKEN']
+    'token': readSecret('/run/secrets/WUMPUM_DBOT_TOKEN')
 }
 
 server = {
