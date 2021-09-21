@@ -40,6 +40,8 @@ async def on_message(message):
 
 @client.event
 async def on_member_update(before, after):
+    if after.bot:
+        return
     PROM_PRESENCE_GAUGE.labels(after.id).set(presence_values.get(str(after.status)))
     await update_tracker_guilds()
 
